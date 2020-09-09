@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Webpage</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+
+
+                    <div class="container-fluid">
+                            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                                <a class="navbar-brand" href="#">LOAN MANAGER</a>
+                                <button
+                                    class="navbar-toggler"
+                                    type="button"
+                                    data-toggle="collapse"
+                                    data-target="#navbarSupportedContent"
+                                    aria-controls="navbarSupportedContent"
+                                    aria-expanded="false"
+                                    aria-label="Toggle navigation"
+                                >
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+                
+                                <div
+                                    class="collapse navbar-collapse"
+                                    id="navbarSupportedContent"
+                                >
+                                    <ul class="navbar-nav navbar-right">
+                                        <li class="nav-item active">
+                                            <a class="nav-link" href="{{ url_for('login2') }}"
+                                                >Home <span class="sr-only">(current)</span></a
+                                            >
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ url_for('profile') }}">My Profile</a>
+                                        </li>
+                                        <li class="nav-item ">
+                                            <a class="nav-link" href="{{ url_for('applyloans') }}">Apply Loans</a>
+                                        </li>
+                                        <li class="nav-item ">
+                                                <a class="nav-link" href="{{ url_for('viewcustomerloans') }}">MyLoans</a>
+                                            </li>
+                                        <li class="nav-item">
+                                                {% if session['loggedin']==True %}
+                                                <a class="nav-link" href="{{url_for('logout')}}">Logout</a>
+                                                {% else %}
+                                                <a class="nav-link" href="{{url_for('index')}}">Login</a>
+                                                {% endif %}
+                                            </li>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+        <div class="jumbotron">
+                <h1 class="display-4">Welcome!!Thanks for choosing us!</h1>
+    
+              </div> 
+
+
+              <div class="container-fluid">
+                    <!-- <div class="jumbotron">
+                        <div class="container-fluid">
+                            <h1>How can we help you with your loans?</h1>
+                        </div>
+                    </div> -->
+                    <!-- icon with text -->
+                    <div class="icons jumbotron">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <!-- <img
+                                        src="pics/priceit.png"
+                                        alt="priceItIcon"
+                                        class="bodyImage"
+                                    /> -->
+                                    <h2>Plan It</h2>
+                                    <p tyle="text-align:center;">Easy loan accounting at your finger tips</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <!-- <img
+                                        src="pics/planit.png"
+                                        alt="planItIcon"
+                                        class="bodyImage"
+                                    /> -->
+                                    <h2>Timely payments</h2>
+                                    <p tyle="text-align:center;">Hassle free online payments</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <!-- <img
+                                        src="pics/makeit.png"
+                                        alt="makeItIcon"
+                                        class="bodyImage"
+                                    /> -->
+                                    <h2>No-more Worries!</h2>
+                                    <p style="text-align:center;" >24*7 customer support.</p>
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div  class="contact">
+                        <div class="container">
+                            <a href="#" class="btn">Conact Us</a>
+                        </div>
+                    </div>
+                </div>
+      </div>
+
+    
+             
+            </body>
+</html>

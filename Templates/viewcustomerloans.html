@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Webpage</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+
+
+                    <div class="container-fluid">
+                            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                                <a class="navbar-brand" href="#">LOAN MANAGER</a>
+                                <button
+                                    class="navbar-toggler"
+                                    type="button"
+                                    data-toggle="collapse"
+                                    data-target="#navbarSupportedContent"
+                                    aria-controls="navbarSupportedContent"
+                                    aria-expanded="false"
+                                    aria-label="Toggle navigation"
+                                >
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+                
+                                <div
+                                    class="collapse navbar-collapse"
+                                    id="navbarSupportedContent"
+                                >
+                                    <ul class="navbar-nav navbar-right">
+                                        <li class="nav-item active">
+                                            <a class="nav-link" href="{{ url_for('login2') }}"
+                                                >Home <span class="sr-only">(current)</span></a
+                                            >
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ url_for('profile') }}">My Profile</a>
+                                        </li>
+                                        <li class="nav-item ">
+                                            <a class="nav-link" href="{{ url_for('applyloans') }}">Apply Loans</a>
+                                        </li>
+                                        <li class="nav-item ">
+                                                <a class="nav-link" href="{{ url_for('viewcustomerloans') }}">MyLoans</a>
+                                            </li>
+                                        <li class="nav-item">
+                                                {% if session['loggedin']==True %}
+                                                <a class="nav-link" href="{{url_for('logout')}}">Logout</a>
+                                                {% else %}
+                                                <a class="nav-link" href="{{url_for('index')}}">Login</a>
+                                                {% endif %}
+                                            </li>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+        
+                        
+                        <table class="table">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">loanNo</th>
+                                    <th scope="col">loanType</th>
+                                    <th scope="col">amount</th>
+                                    <th scope="col">rateofInterest</th>
+                                    <th scope="col">DateOfIssue</th>
+                                    <th scope="col">timePeriod</th>
+                                    <th scope="col">bankNo</th>
+                                    <th scope="col">accountNo</th>
+                                    <th scope="col">loanStatus</th>
+                                    <th scope="col">paymentStatus</th>
+                                    <th scope="col"></th>
+            
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                    {% for i in loan %}
+                                  <tr>
+                                        
+                                    <td>{{ i['loan_no'] }}</td>
+                                    <td>{{ i['loan_type'] }}</td>
+                                    <td>{{ i['amt'] }}</td>
+                                    <td>{{ i['roi'] }}</td>
+                                    <td>{{ i['doi'] }}</td>
+                                    <td>{{ i['time_period'] }}</td>
+                                    <td>{{ i['bno'] }}</td>
+                                    <td>{{ i['account_no'] }}</td>
+                                    <td>{{ i['status'] }}</td>
+                                    <td>{{ i['payment_status'] }}</td>
+                                    {% if( i['payment_status']=='unpaid' and i['status']=="approved")%}
+                                    <td scope="col">
+                                            <form action="{{ url_for('loanpayment') }}" method="POST">
+                                                    <input id="loan_no" name="loan_no" type="hidden" value="{{ i['loan_no'] }}">
+                                                    <button >Pay Now!</button>
+                                            </form>
+                                        </td>     
+                                    {% endif %}
+            
+                                  </tr>
+                                 {% endfor %}
+                                </tbody>
+                              </table>
+                  
+                              
+    
+             
+</body>
+</html>

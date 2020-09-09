@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+
+    <style>
+       
+    .glyphicon {  margin-bottom: 10px;margin-right: 10px;}
+
+    small {
+    display: block;
+    line-height: 1.428571429;
+    color: #999;
+    }
+    </style>
+
+<style>
+        .card {
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+          max-width: 300px;
+          margin: auto;
+          text-align: center;
+          font-family: arial;
+        }
+        
+        .title {
+          color: grey;
+          font-size: 18px;
+        }
+        
+        button {
+          border: none;
+          outline: 0;
+          display: inline-block;
+          padding: 8px;
+          color: white;
+          background-color: #000;
+          text-align: center;
+          cursor: pointer;
+          width: 100%;
+          font-size: 18px;
+        }
+        
+        a {
+          text-decoration: none;
+          font-size: 22px;
+          color: black;
+        }
+        
+        button:hover, a:hover {
+          opacity: 0.7;
+        }
+        </style>
+</head>
+<body>
+        <div class="container-fluid">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <a class="navbar-brand" href="#">LOAN MANAGER</a>
+                    <button
+                        class="navbar-toggler"
+                        type="button"
+                        data-toggle="collapse"
+                        data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
+                    >
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+    
+                    <div
+                        class="collapse navbar-collapse"
+                        id="navbarSupportedContent"
+                    >
+                        <ul class="navbar-nav navbar-right">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{{ url_for('login2') }}"
+                                    >Home <span class="sr-only">(current)</span></a
+                                >
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url_for('profile') }}">My Profile</a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="{{ url_for('applyloans') }}">Apply Loans</a>
+                            </li>
+                            <li class="nav-item ">
+                                    <a class="nav-link" href="{{ url_for('viewcustomerloans') }}">MyLoans</a>
+                                </li>
+                            <li class="nav-item">
+                                    {% if session['loggedin']==True %}
+                                    <a class="nav-link" href="{{url_for('logout')}}">Logout</a>
+                                    {% else %}
+                                    <a class="nav-link" href="{{url_for('index')}}">Login</a>
+                                    {% endif %}
+                                </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div> 
+
+
+           <div class="container-fluid">
+                <div class="card">
+                        <img src="https://www.w3schools.com/w3images/team2.jpg" alt="John" style="width:100%">
+                        <h1>{{ session['profile_username'] }}</h1>
+                        <p class="title">Student</p>
+                        <p>{{ new_data['address']}}</p>
+                        <span><a href="#"><i class="fa fa-google"></i></a> &nbsp; {{ session['profile_email'] }}</span>
+                        <span><a href="#"><i class="fa fa-phone"></i></a> &nbsp;{{ new_data['phone'] }}</span>
+                        <!-- <span><a href="#"><i class="fa fa-id-card-o"></i></a> &nbsp;acc_no: {{ new_data['account_no'] }}</span> -->
+                        <span><a href="#"><i class="fa fa-inr"></i></a> &nbsp;Balance:{{ balance }}</span>
+ 
+                        <p><button><i class="fa fa-id-card-o"></i> &nbsp;acc_no: {{ new_data['account_no'] }}</button></p>
+                      </div>
+           </div>
+
+
+        <!-- <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-6">
+                    <div class="well well-sm">
+                        <div class="row">
+                           
+                            <div class="col-sm-6 col-md-8">
+                                <h4>
+                                   {{ session['profile_username'] }}</h4>
+                                <small><cite title="San Francisco, USA">{{ new_data['address']}} <i class="glyphicon glyphicon-map-marker">
+                                </i></cite></small>
+                                <p>
+                                    <i class="glyphicon glyphicon-envelope"></i>{{ session['profile_email'] }}
+                                    <br />
+                                    <i class="glyphicon glyphicon-globe"></i>
+                                    <br />
+                                    <i class="glyphicon glyphicon-gift"></i>Phone NO:{{ new_data['phone'] }}
+                                    <i class="glyphicon glyphicon-globe"></i>AccountNO:{{ new_data['account_no'] }}
+                                    <i class="glyphicon glyphicon-globe"></i>Balance:{{ balance }}
+                                    <br />
+                                </p>
+                                <!-- Split button -->
+                              
+                            <!-- </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+         --> -->
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Webpage</title>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<style>.context-dark, .bg-gray-dark, .bg-primary {
+        color: rgba(255, 255, 255, 0.8);
+    }
+    
+    .footer-classic a, .footer-classic a:focus, .footer-classic a:active {
+        color: #ffffff;
+    }
+    .nav-list li {
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    
+    .nav-list li a:hover:before {
+        margin-left: 0;
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    ul, ol {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .social-inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        padding: 23px;
+        font: 900 13px/1 "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.5);
+    }
+    .social-container .col {
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .nav-list li a:before {
+        content: "\f14f";
+        font: 400 21px/1 "Material Design Icons";
+        color: #4d6de6;
+        display: inline-block;
+        vertical-align: baseline;
+        margin-left: -28px;
+        margin-right: 7px;
+        opacity: 0;
+        visibility: hidden;
+        transition: .22s ease;
+    }</style>
+<body>
+
+
+                    <div class="container-fluid">
+                            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                                <a class="navbar-brand" href="#">LOAN MANAGER</a>
+                                <button
+                                    class="navbar-toggler"
+                                    type="button"
+                                    data-toggle="collapse"
+                                    data-target="#navbarSupportedContent"
+                                    aria-controls="navbarSupportedContent"
+                                    aria-expanded="false"
+                                    aria-label="Toggle navigation"
+                                >
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+                
+                                <div
+                                    class="collapse navbar-collapse"
+                                    id="navbarSupportedContent"
+                                >
+                                    <ul class="navbar-nav navbar-right">
+                                        <li class="nav-item active">
+                                            <a class="nav-link" href="#"
+                                                >Home <span class="sr-only">(current)</span></a
+                                            >
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{url_for('viewcustomer')}}">Customer</a>
+                                        </li>
+                                        <li class="nav-item ">
+                                            <a class="nav-link" href="/viewadminloans">Loans</a>
+                                        </li>
+                                        <li class="nav-item ">
+                                                <a class="nav-link" href="/viewsuperloans">SuperLoans</a>
+                                            </li>
+                                        <li class="nav-item">
+                                                {% if session['loggedin']==True %}
+                                                <a class="nav-link" href="{{url_for('logout')}}">Logout</a>
+                                                {% else %}
+                                                <a class="nav-link" href="{{url_for('index')}}">Login</a>
+                                                {% endif %}
+                                            </li>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+      
+                    <div class="container-fluid">
+                            <div class="jumbotron">
+                                <div class="container-fluid">
+                                    <h1>How can we help you with your loans?</h1>
+                                </div>
+                            </div>
+                            <!-- icon with text -->
+                            <div class="icons jumbotron">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <!-- <img
+                                                src="pics/priceit.png"
+                                                alt="priceItIcon"
+                                                class="bodyImage"
+                                            /> -->
+                                            <h2>Plan It</h2>
+                                            <p>Easy loan accounting at your finger tips</p>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <!-- <img
+                                                src="pics/planit.png"
+                                                alt="planItIcon"
+                                                class="bodyImage"
+                                            /> -->
+                                            <h2>Timely payments</h2>
+                                            <p>Hassle free online payments</p>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <!-- <img
+                                                src="pics/makeit.png"
+                                                alt="makeItIcon"
+                                                class="bodyImage"
+                                            /> -->
+                                            <h2>No-more Worries!</h2>
+                                            <p></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <!-- <div  class="contact">
+                                <div class="container">
+                                    <a href="#" class="btn">Conact Us</a>
+                                </div>
+                            </div> -->
+                        </div>
+                       
+                        <!------ Include the above in your HEAD tag ---------->
+                        
+                        <footer class="section footer-classic context-dark bg-image" style="background: #2d3246;">
+                                <div class="container">
+                                  <div class="row row-30">
+                                    <div class="col-md-4 col-xl-5">
+                                      <div class="pr-xl-4"><a class="brand" href="index.html"><img class="brand-logo-light" src="images/agency/logo-inverse-140x37.png" alt="" width="140" height="37" srcset="images/agency/logo-retina-inverse-280x74.png 2x"></a>
+                                        <p>We are an award-winning creative agency, dedicated to the best result in web design, promotion, business consulting, and marketing.</p>
+                                        <!-- Rights-->
+                                        <p class="rights"><span>©  </span><span class="copyright-year">2018</span><span> </span><span>Waves</span><span>. </span><span>All Rights Reserved.</span></p>
+                                      </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                      <h5>Contacts</h5>
+                                      <dl class="contact-list">
+                                        <dt>Address:</dt>
+                                        <dd>798 South Park Avenue, Jaipur, Raj</dd>
+                                      </dl>
+                                      <dl class="contact-list">
+                                        <dt>email:</dt>
+                                        <dd><a href="mailto:#">dkstudioin@gmail.com</a></dd>
+                                      </dl>
+                                      <dl class="contact-list">
+                                        <dt>phones:</dt>
+                                        <dd><a href="tel:#">https://karosearch.com</a> <span>or</span> <a href="tel:#">https://karosearch.com</a>
+                                        </dd>
+                                      </dl>
+                                    </div>
+                                    <div class="col-md-4 col-xl-3">
+                                      <h5>Links</h5>
+                                      <ul class="nav-list">
+                                        <li><a href="#">About</a></li>
+                                        <li><a href="#">Projects</a></li>
+                                        <li><a href="#">Blog</a></li>
+                                        <li><a href="#">Contacts</a></li>
+                                        <li><a href="#">Pricing</a></li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="row no-gutters social-container">
+                                  <div class="col"><a class="social-inner" href="#"><span class="icon mdi mdi-facebook"></span><span>Facebook</span></a></div>
+                                  <div class="col"><a class="social-inner" href="#"><span class="icon mdi mdi-instagram"></span><span>instagram</span></a></div>
+                                  <div class="col"><a class="social-inner" href="#"><span class="icon mdi mdi-twitter"></span><span>twitter</span></a></div>
+                                  <div class="col"><a class="social-inner" href="#"><span class="icon mdi mdi-youtube-play"></span><span>google</span></a></div>
+                                </div>
+                              </footer>
+    
+             
+            </body>
+</html>
